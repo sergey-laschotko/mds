@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">Менеджер Доставки</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [(opened)]="isMenuOpen">
+    <mat-list>
+      <mat-list-item>
+        <a href="/" class="nav-link">
+          <mat-icon class="menu-icon" color="primary">home</mat-icon>
+          Главная
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+          <a href="/routes" class="nav-link">
+            <mat-icon class="menu-icon" color="primary">pin_drop</mat-icon>
+            Маршруты
+          </a>
+      </mat-list-item>
+      <mat-list-item>
+          <a href="/autos" class="nav-link">
+            <mat-icon class="menu-icon" color="primary">directions_car</mat-icon>
+            Транспорт
+          </a>
+      </mat-list-item>
+      <mat-list-item>
+          <a href="/report" class="nav-link">
+            <mat-icon class="menu-icon" color="primary">ballot</mat-icon>
+            Отчет
+          </a>
+      </mat-list-item>
+      <mat-list-item>
+          <a href="/delivery" class="nav-link">
+            <mat-icon class="menu-icon" color="primary">device_hub</mat-icon>
+            Доставки
+          </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
