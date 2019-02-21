@@ -1,0 +1,13 @@
+mat-form-field {
+    margin-left: 30px;
+}
+
+.inline-form {
+    position: absolute;
+    top: -5px;
+    left: -14px;
+}
+
+mat-list-item {
+    position: relative;
+}

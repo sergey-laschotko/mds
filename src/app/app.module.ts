@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+
+import { RoutesService } from "./routes.service";
+import { AutosService } from "./autos.service";
+import { DeliveryService } from "./delivery.service";
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from "./material.module";
@@ -32,12 +37,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [RoutesService, DeliveryService, AutosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

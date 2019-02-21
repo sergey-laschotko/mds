@@ -1,3 +1,32 @@
-<p>
-  routes works!
-</p>
+<div class="wrapper">
+  <div class="center-block">
+    <h1 class="text-center">Маршруты</h1>
+    <p class="text-center">Здесь вы можете создавать, изменять и удалять маршруты доставки</p>
+    <mat-card class="block-card">
+      <h4 *ngIf="!routes.length">Пока нет ни одного маршрута</h4>
+      <button mat-raised-button color="primary" (click)="addRoute(route)" [disabled]="validateRoute()">Добавить</button>
+      <mat-form-field>
+        <input matInput [(ngModel)]="route" placeholder="Название маршрута" />
+      </mat-form-field>
+      <mat-list *ngFor="let route of routes">
+        <mat-list-item>
+          <span *ngIf="!isCurrent(route)">{{route.title}}</span>
+          <span *ngIf="isCurrent(route)">
+            <mat-form-field class="inline-form">
+              <input matInput [(ngModel)]="route.title" value="{{route.title}}" />
+            </mat-form-field>
+          </span>
+          <span class="action-buttons">
+            <button mat-icon-button (click)="makeCurrent(route)" class="edit-button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeRoute(route)" class="delete-button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-card>
+  </div>
+</div>
