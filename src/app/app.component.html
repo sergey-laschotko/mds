@@ -10,38 +10,65 @@
     </button>
   </span>
   <span class="app-title">Менеджер Доставки</span>
+  <span>
+    <button mat-button [matMenuTriggerFor]="menu">Разделы</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <a class="menu-link" routerLink="/routes">Маршруты</a>
+      </button>
+      <button mat-menu-item>
+        <a class="menu-link" routerLink="/autos">Авто</a>
+      </button>
+      <button mat-menu-item>
+        <a class="menu-link" routerLink="/report">Отчет</a>
+      </button>
+      <button mat-menu-item>
+        <a class="menu-link" routerLink="/delivery">Анализ</a>
+      </button>
+    </mat-menu>
+  </span>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav [(opened)]="isMenuOpen">
     <mat-list>
       <mat-list-item>
         <a routerLink="/" class="nav-link" (click)="sidenav.close()">
-          <mat-icon class="menu-icon" color="primary">home</mat-icon>
-          Главная
+          <span>
+            <mat-icon class="menu-icon" color="primary">home</mat-icon>
+            Главная
+          </span>
         </a>
       </mat-list-item>
       <mat-list-item>
           <a routerLink="/routes" class="nav-link" (click)="sidenav.close()">
-            <mat-icon class="menu-icon" color="primary">pin_drop</mat-icon>
-            Маршруты
+            <span>
+              <mat-icon class="menu-icon" color="primary">pin_drop</mat-icon>
+              Маршруты
+            </span>
           </a>
       </mat-list-item>
       <mat-list-item>
           <a routerLink="/autos" class="nav-link" (click)="sidenav.close()">
-            <mat-icon class="menu-icon" color="primary">directions_car</mat-icon>
-            Транспорт
+            <span>
+              <mat-icon class="menu-icon" color="primary">directions_car</mat-icon>
+              Транспорт
+            </span>
           </a>
       </mat-list-item>
       <mat-list-item>
           <a routerLink="/report" class="nav-link" (click)="sidenav.close()">
-            <mat-icon class="menu-icon" color="primary">ballot</mat-icon>
-            Отчет
+            <span>
+              <mat-icon class="menu-icon" color="primary">ballot</mat-icon>
+              Отчет
+            </span>
           </a>
       </mat-list-item>
       <mat-list-item>
           <a routerLink="/delivery" class="nav-link" (click)="sidenav.close()">
-            <mat-icon class="menu-icon" color="primary">device_hub</mat-icon>
-            Доставки
+            <span>
+              <mat-icon class="menu-icon" color="primary">device_hub</mat-icon>
+              Доставки
+            </span>
           </a>
       </mat-list-item>
     </mat-list>
