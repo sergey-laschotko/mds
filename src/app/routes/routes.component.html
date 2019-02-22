@@ -3,11 +3,11 @@
     <h1 class="text-center">Маршруты</h1>
     <p class="text-center">Здесь вы можете создавать, изменять и удалять маршруты доставки</p>
     <mat-card class="block-card">
-      <h4 *ngIf="!routes.length">Пока нет ни одного маршрута</h4>
       <button mat-raised-button color="primary" (click)="addRoute(route)" [disabled]="validateRoute()">Добавить</button>
       <mat-form-field>
         <input matInput [(ngModel)]="route" placeholder="Название маршрута" />
       </mat-form-field>
+      <h4 *ngIf="!routes.length">Пока нет ни одного маршрута</h4>
       <mat-list *ngFor="let route of routes">
         <mat-list-item>
           <span *ngIf="!isCurrent(route)">{{route.title}}</span>

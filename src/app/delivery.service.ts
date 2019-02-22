@@ -3,15 +3,17 @@ import { SimulateOrderAccepter } from "./service/order-accepter";
 import { DeliveryManager } from "./service/delivery-manager";
 import { RoutesService } from "./routes.service";
 
+
+let orders = [];
+let report: object = {};
+let setting: object;
+
 @Injectable({
   providedIn: 'root'
 })
 export class DeliveryService {
   accepter: SimulateOrderAccepter;
   manager: DeliveryManager;
-  orders = [];
-  report: object = {};
-  setting: object;
 
 
   constructor(private routesService: RoutesService) {
@@ -21,23 +23,23 @@ export class DeliveryService {
   fillService() {
     this.accepter = new SimulateOrderAccepter(this.routesService.getRoutes());
     this.accepter.simulateDay(2000);
-    this.orders = this.accepter.transferOrders();
+    orders = this.accepter.transferOrders();
     this.manager = new DeliveryManager(this.routesService.getRoutes());
-    this.manager.takeOrders(this.orders);
-    this.report = this.manager.getReport();
-    this.setting = this.manager.setToAutos();
+    this.manager.takeOrders(orders);
+    report = this.manager.getReport();
+    setting = this.manager.setToAutos();
   }
 
   getReport() {
-    return this.report;
+    return report;
   }
 
   getSetting() {
-    return this.setting;
+    return setting;
   }
 
   deleteReport() {
-    this.report = {};
-    this.setting = {};
+    report = {};
+    setting = {};
   }
 }

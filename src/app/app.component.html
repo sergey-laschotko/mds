@@ -13,16 +13,16 @@
   <span>
     <button mat-button [matMenuTriggerFor]="menu">Разделы</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="sidenav.close()">
         <a class="menu-link" routerLink="/routes">Маршруты</a>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="sidenav.close()">
         <a class="menu-link" routerLink="/autos">Авто</a>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="sidenav.close()">
         <a class="menu-link" routerLink="/report">Отчет</a>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="sidenav.close()">
         <a class="menu-link" routerLink="/delivery">Анализ</a>
       </button>
     </mat-menu>
