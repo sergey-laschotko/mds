@@ -1,3 +1,91 @@
-<p>
-  autos works!
-</p>
+<div class="wrapper">
+  <h1 class="text-center">Транспорт</h1>
+  <p class="text-center">Здесь вы можете просматривать, создавать, изменять и удалять транспорт.</p>
+  <div class="center-wrapper">
+    <mat-card class="block-card">
+      <p *ngIf="!gotAutos">На данный момент транспорта нет.</p>
+      <div class="form-button">
+        <button mat-raised-button color="primary" (click)="toggleForm()">
+          <span *ngIf="!showInput">Добавить транспорт</span>
+          <span *ngIf="showInput">Скрыть форму</span>
+        </button>
+        <div [ngClass]="{ 'visible-form': showInput }" class="inline-form">
+          <mat-form-field>
+            <input matInput placeholder="Водитель" (ngModelChange)="validate()" [(ngModel)]="auto.driver" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Вид транспорта" [(ngModel)]="auto.car">
+              <mat-option *ngFor="let auto of autoOptions" [value]="auto.value">
+                {{auto.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Номер телефона" (ngModelChange)="validate()" [(ngModel)]="auto.phone" />
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="validate()" (click)="postAuto(auto)">Добавить</button>
+        </div>
+      </div>
+      <div *ngIf="gotAutos">
+        <table mat-table [dataSource]="autos" class="mat-elevation-z8">
+          <ng-container matColumnDef="driver">
+            <th mat-header-cell *matHeaderCellDef> Водитель </th>
+            <td class="table-cell" mat-cell *matCellDef="let element">
+              <span *ngIf="!isCurrent(element)">
+                  {{element.driver}}
+              </span>
+              <span class="edit-form" *ngIf="isCurrent(element)">
+                <mat-form-field>
+                  <input matInput value="element.driver" [(ngModel)]="element.driver" (ngModelChange)="onEdit(element)" />
+                </mat-form-field>
+              </span> 
+              <span class="action-buttons">
+                <button mat-icon-button class="save-button" (click)="updateAuto(element)" *ngIf="isCurrent(element)">
+                  <mat-icon>save</mat-icon>
+                </button>
+                <button mat-icon-button class="edit-button" (click)="makeCurrent(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button class="delete-button" (click)="deleteAuto(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </span> 
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Номер телефона </th>
+            <td mat-cell *matCellDef="let element">
+                <span *ngIf="!isCurrent(element)">
+                    {{element.phone}}
+                </span>
+                <span class="edit-form" *ngIf="isCurrent(element)">
+                  <mat-form-field>
+                    <input matInput value="element.phone" (ngModelChange)="onEdit(element)" [(ngModel)]="element.phone" />
+                  </mat-form-field>
+                </span>
+              </td>
+          </ng-container>
+          <ng-container matColumnDef="car">
+            <th mat-header-cell *matHeaderCellDef> Транспорт </th>
+            <td class="table-cell" mat-cell *matCellDef="let element">
+               <span *ngIf="!isCurrent(element)">
+                  {{element.car == "truck" ? "Грузовик" : "Легковая"}}
+               </span>
+               <span *ngIf="isCurrent(element)">
+                  <mat-form-field>
+                    <mat-select placeholder="{{element.car == truck ? 'Грузовик' : 'Легковая'}}">
+                      <mat-option *ngFor="let auto of autoOptions" [value]="auto.value">
+                        {{auto.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+               </span>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </div>
+</div>

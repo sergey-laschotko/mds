@@ -26,17 +26,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: block;
     overflow: hidden;
 }
-
-.action-buttons {
-    position: absolute;
-    bottom: 5px;
-    left: 300px;
-}
-
-.edit-button {
-    color: green;
-}
-
-.delete-button {
-    color: red;
-}

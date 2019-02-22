@@ -4,15 +4,16 @@ import { genID } from "./service/lib/lib";
 import { Injectable } from '@angular/core';
 import { IRoute } from "./service/routes";
 
+let routes: IRoute[] = [];
+
 
 @Injectable()
 export class RoutesService {
-  routes: IRoute[] = [];
 
   constructor() { }
 
   getRoutes() {
-    return this.routes;
+    return routes;
   }
 
   createRoute(title: string) {
@@ -22,17 +23,17 @@ export class RoutesService {
       id: genID()
     };
 
-    this.routes.push(route);
+    routes.push(route);
   }
 
   editRoute(route: IRoute) {
-    let filteredRoutes = this.routes.filter((r: IRoute) => r.id !== route.id);
+    let filteredRoutes = routes.filter((r: IRoute) => r.id !== route.id);
     filteredRoutes.push(route);
-    this.routes = filteredRoutes;
+    routes = filteredRoutes;
   }
 
   deleteRoute(route: IRoute) {
-    let filteredRoutes = this.routes.filter((r: IRoute) => r.id !== route.id);
-    this.routes = filteredRoutes;
+    let filteredRoutes = routes.filter((r: IRoute) => r.id !== route.id);
+    routes = filteredRoutes;
   }
 }
