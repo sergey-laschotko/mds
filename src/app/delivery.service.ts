@@ -15,6 +15,7 @@ export class DeliveryService {
 
 
   constructor(private routesService: RoutesService) {
+    this.routesService.getRoutes();
   }
 
   fillService() {

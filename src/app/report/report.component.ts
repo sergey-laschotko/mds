@@ -11,8 +11,10 @@ import { RoutesService } from "../routes.service";
 export class ReportComponent implements OnInit {
   report: object;
 
-  constructor(private deliveryService: DeliveryService,
-    private routesService: RoutesService) { }
+  constructor(
+    private deliveryService: DeliveryService,
+    private routesService: RoutesService
+  ) { }
 
   ngOnInit() {
     this.getReport();

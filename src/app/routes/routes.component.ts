@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RoutesService } from "../routes.service";
 import { IRoute } from "../service/routes";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -23,7 +23,9 @@ export class RoutesComponent implements OnInit {
     return !(this.route.length > 0);
   }
 
-  constructor(private routesService: RoutesService, private snackBar: MatSnackBar) { }
+  constructor(private routesService: RoutesService, private snackBar: MatSnackBar) { 
+    
+  }
 
   ngOnInit() {
     this.getRoutes();

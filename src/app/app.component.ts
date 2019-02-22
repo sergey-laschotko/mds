@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RoutesService } from "./routes.service";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isMenuOpen: boolean = false;
 
-  routes = [];
+  constructor(private routesService: RoutesService) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
