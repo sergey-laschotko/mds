@@ -11,3 +11,17 @@ mat-form-field {
 mat-list-item {
     position: relative;
 }
+
+.action-buttons {
+    position: absolute;
+    bottom: 5px;
+    left: 300px;
+}
+
+.edit-button {
+    color: green;
+}
+
+.delete-button {
+    color: red;
+}

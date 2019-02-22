@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutesService } from "../routes.service";
 import { IRoute } from "../service/routes";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-routes',
@@ -16,12 +17,13 @@ export class RoutesComponent implements OnInit {
     title: "",
     slug: ""
   };
+  editingMode: boolean = false;
 
   validateRoute() {
     return !(this.route.length > 0);
   }
 
-  constructor(private routesService: RoutesService) { }
+  constructor(private routesService: RoutesService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getRoutes();
@@ -34,8 +36,10 @@ export class RoutesComponent implements OnInit {
         title: "",
         slug: ""
       };
+      this.editingMode = false;
     } else {
       this.current = route;
+      this.editingMode = true;
     }
   }
 
@@ -51,15 +55,24 @@ export class RoutesComponent implements OnInit {
     this.routesService.createRoute(title);
     this.route = "";
     this.getRoutes();
+    this.snackBar.open("Маршрут добавлен", "", {
+      duration: 3000
+    })
   }
 
   removeRoute(route: IRoute) {
     this.routesService.deleteRoute(route);
     this.getRoutes();
+    this.snackBar.open("Маршрут удален", "" ,{
+      duration: 3000
+    });
   }
 
   editRoute(route: IRoute) {
     this.routesService.editRoute(route);
     this.getRoutes();
+    this.snackBar.open("Маршрут обновлен", "", {
+      duration: 3000
+    });
   }
 }

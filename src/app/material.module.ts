@@ -13,6 +13,8 @@ import { MatSortModule } from "@angular/material/sort";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
     imports: [
@@ -29,6 +31,8 @@ import { MatInputModule } from "@angular/material/input";
         DragDropModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSnackBarModule,
+        MatSelectModule,
     ],
     exports: [
         MatCheckboxModule,
@@ -44,6 +48,8 @@ import { MatInputModule } from "@angular/material/input";
         DragDropModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSnackBarModule,
+        MatSelectModule,
     ]
 })
 export class MaterialModule {}
