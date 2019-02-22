@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+}
+
+table {
+    margin-top: 30px;
+}
+
+th {
+    position: relative;
+}
+
+.delete-table-icon {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    transition: all 0.2s ease-in;
+}
+
+.mat-grid-list {
+    box-shadow: 3px 3px 3px #ccc;
+}
+
+.mat-grid-tile {
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #777;
+}

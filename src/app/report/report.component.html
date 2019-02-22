@@ -4,13 +4,66 @@
       <p class="text-center">Здесь вы можете создавать и удалять отчеты по заказам</p>
       <mat-card class="block-card">
         <div *ngIf="!report.totalOrders">
-          <h4>На данный момент отчет не создавался.</h4>
+          <h4>Нет созданных отчетов.</h4>
           <button mat-raised-button color="primary" (click)="createReport()">Создать отчет</button>
         </div>
-        <div *ngIf="report.totalOrders == 0">
+        <div *ngIf="!routes.length">
           <h4>Отчет пустой. Возможно не создано ни одного маршрута доставки.</h4>
-          <a href="/routes">Перейти к странице маршрутов</a>
+          <a routerLink="/routes">Перейти к странице маршрутов</a>
         </div>
-      </mat-card>  
+        <div *ngIf="formattedData.length">
+          <mat-grid-list cols="6" rowHeight="50px">
+            <mat-grid-tile>Всего Посылок</mat-grid-tile>
+            <mat-grid-tile>Масса Посылок</mat-grid-tile>
+            <mat-grid-tile>Всего Бандеролей</mat-grid-tile>
+            <mat-grid-tile>Масса Бандеролей</mat-grid-tile>
+            <mat-grid-tile>Всего Заказов</mat-grid-tile>
+            <mat-grid-tile>Общая Масса</mat-grid-tile>
+            <mat-grid-tile>{{report.totalLPackages}}</mat-grid-tile>
+            <mat-grid-tile>{{report.totalLPackagesKG}}</mat-grid-tile>
+            <mat-grid-tile>{{report.totalSPackages}}</mat-grid-tile>
+            <mat-grid-tile>{{report.totalSPackagesKG}}</mat-grid-tile>
+            <mat-grid-tile>{{report.totalOrders}}</mat-grid-tile>
+            <mat-grid-tile>{{report.totalKG}}</mat-grid-tile>
+          </mat-grid-list>
+          <table mat-table [dataSource]="formattedData" class="mat-elevation-z8">
+            <ng-container matColumnDef="route">
+              <th mat-header-cell *matHeaderCellDef> Маршрут </th>
+              <td mat-cell *matCellDef="let element"> {{element.route}} </td>
+            </ng-container>
+            <ng-container matColumnDef="largePackages">
+              <th mat-header-cell *matHeaderCellDef> Посылок </th>
+              <td mat-cell *matCellDef="let element"> {{element.largePackages}} </td>
+            </ng-container>
+            <ng-container matColumnDef="largePackagesKG">
+              <th mat-header-cell *matHeaderCellDef> Масса Посылок </th>
+              <td mat-cell *matCellDef="let element"> {{element.largePackagesKG}} </td>
+            </ng-container>
+            <ng-container matColumnDef="smallPackages">
+              <th mat-header-cell *matHeaderCellDef> Бандеролей </th>
+              <td mat-cell *matCellDef="let element"> {{element.smallPackages}} </td>
+            </ng-container>
+            <ng-container matColumnDef="smallPackagesKG">
+              <th mat-header-cell *matHeaderCellDef> Масса Бандеролей </th>
+              <td mat-cell *matCellDef="let element"> {{element.smallPackagesKG}} </td>
+            </ng-container>
+            <ng-container matColumnDef="totalKG">
+              <th mat-header-cell *matHeaderCellDef> Общая Масса </th>
+              <td mat-cell *matCellDef="let element"> {{element.totalKG}} </td>
+            </ng-container>
+            <ng-container matColumnDef="totalPackages">
+              <th mat-header-cell *matHeaderCellDef> 
+                Всего Заказов 
+                <button mat-icon-button color="warn" class="delete-table-icon" (click)="deleteReport()">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.totalPackages}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card>
     </div>
   </div>

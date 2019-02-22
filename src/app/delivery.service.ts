@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
+import { IReport } from "./service/delivery-manager";
 import { SimulateOrderAccepter } from "./service/order-accepter";
 import { DeliveryManager } from "./service/delivery-manager";
 import { RoutesService } from "./routes.service";
 
-
 let orders = [];
-let report: object = {};
+let report: IReport = {
+  totalOrders: 0,
+  totalKG: 0,
+  totalSPackages: 0,
+  totalLPackages: 0,
+  totalSPackagesKG: 0,
+  totalLPackagesKG: 0,
+  packagesByRoutes: null
+};
 let setting: object;
 
 @Injectable({
@@ -39,7 +47,15 @@ export class DeliveryService {
   }
 
   deleteReport() {
-    report = {};
+    report = {
+      totalOrders: 0,
+      totalKG: 0,
+      totalSPackages: 0,
+      totalLPackages: 0,
+      totalSPackagesKG: 0,
+      totalLPackagesKG: 0,
+      packagesByRoutes: null
+    };
     setting = {};
   }
 }

@@ -2,7 +2,7 @@ import { IPackage } from "./packages";
 import { IRoute } from "./routes";
 import { ITransport, Car, Truck } from "./transport";
 
-interface IReport {
+export interface IReport {
     totalOrders: number;
     totalKG: number;
     totalSPackages: number;

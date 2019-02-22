@@ -8,13 +8,10 @@
     width: 95%;
     margin: 20px auto;
     box-sizing: border-box;
-    text-decoration: none;
     transition: box-shadow 0.2s ease-in-out;
 }
 
 .home-item:focus, .home-item:hover {
-    text-decoration: none;
-    outline: none;
     box-shadow: 5px 5px 5px #ccc;
     transition: box-shadow 0.2s ease-in-out;
 }

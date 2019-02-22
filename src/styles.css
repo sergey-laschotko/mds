@@ -25,3 +25,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden;
     outline: none;
 }
+
+a {
+    text-decoration: none;
+    color: #3f51b5;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    outline: none;
+    color: #3f51b5;
+}
