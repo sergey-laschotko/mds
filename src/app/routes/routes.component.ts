@@ -57,7 +57,7 @@ export class RoutesComponent implements OnInit {
     this.getRoutes();
     this.snackBar.open("Маршрут добавлен", "", {
       duration: 3000
-    })
+    });
   }
 
   removeRoute(route: IRoute) {

@@ -44,37 +44,40 @@ export class DeliveryManager implements IDeliveryManager {
             packagesByRoutes: {}
         };
 
-        for (let i = 0; i < this.routes.length; i++) {
-            report.packagesByRoutes[this.routes[i].slug] = {
-                totalPackages: 0,
-                smallPackages: 0,
-                largePackages: 0,
-                totalKG: 0,
-                smallPackagesKG: 0,
-                largePackagesKG: 0,
-                route: this.routes[i]
-            };
+        if (this.routes.length) {
+            for (let i = 0; i < this.routes.length; i++) {
+                report.packagesByRoutes[this.routes[i].slug] = {
+                    totalPackages: 0,
+                    smallPackages: 0,
+                    largePackages: 0,
+                    totalKG: 0,
+                    smallPackagesKG: 0,
+                    largePackagesKG: 0,
+                    route: this.routes[i]
+                };
+            }
+    
+            for (let i = 0; i < this.orders.length; i++) {
+                let pack = this.orders[i];
+                let weight: number = pack.weight;
+                let isSmall: boolean = pack.weight === 2 ? true : false;
+                let route: string = this.routes[pack.route].slug;
+    
+                report.totalOrders += 1;
+                report.totalKG += weight;
+                report.totalSPackages += isSmall ? 1 : 0;
+                report.totalLPackages += isSmall ? 0 : 1;
+                report.totalSPackagesKG += isSmall ? weight : 0;
+                report.totalLPackagesKG += isSmall ? 0 : weight;
+                report.packagesByRoutes[route].totalPackages += 1;
+                report.packagesByRoutes[route].smallPackages += isSmall ? 1 : 0;
+                report.packagesByRoutes[route].largePackages += isSmall ? 0 : 1;
+                report.packagesByRoutes[route].totalKG += weight;
+                report.packagesByRoutes[route].smallPackagesKG += isSmall ? weight : 0;
+                report.packagesByRoutes[route].largePackagesKG += isSmall ? 0 : weight;
+            }
         }
 
-        for (let i = 0; i < this.orders.length; i++) {
-            let pack = this.orders[i];
-            let weight: number = pack.weight;
-            let isSmall: boolean = pack.weight === 2 ? true : false;
-            let route: string = this.routes[pack.route].slug;
-
-            report.totalOrders += 1;
-            report.totalKG += weight;
-            report.totalSPackages += isSmall ? 1 : 0;
-            report.totalLPackages += isSmall ? 0 : 1;
-            report.totalSPackagesKG += isSmall ? weight : 0;
-            report.totalLPackagesKG += isSmall ? 0 : weight;
-            report.packagesByRoutes[route].totalPackages += 1;
-            report.packagesByRoutes[route].smallPackages += isSmall ? 1 : 0;
-            report.packagesByRoutes[route].largePackages += isSmall ? 0 : 1;
-            report.packagesByRoutes[route].totalKG += weight;
-            report.packagesByRoutes[route].smallPackagesKG += isSmall ? weight : 0;
-            report.packagesByRoutes[route].largePackagesKG += isSmall ? 0 : weight;
-        }
 
         return report;
     }

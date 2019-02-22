@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isMenuOpen: boolean = false;
 
+  routes = [];
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
