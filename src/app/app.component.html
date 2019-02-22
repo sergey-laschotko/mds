@@ -1,7 +1,14 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
+  <span *ngIf="!isMenuOpen">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </span>
+  <span *ngIf="isMenuOpen">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </span>
   <span class="app-title">Менеджер Доставки</span>
 </mat-toolbar>
 <mat-sidenav-container>
