@@ -3,12 +3,14 @@
       <h1 class="text-center">Отчет</h1>
       <p class="text-center">Здесь вы можете создавать и удалять отчеты по заказам</p>
       <mat-card class="block-card">
-        <div *ngIf="!report.totalOrders">
-          <h4>Нет созданных отчетов.</h4>
-          <button mat-raised-button color="primary" (click)="createReport()">Создать отчет</button>
+        <div *ngIf="routes.length">
+          <div *ngIf="!report.totalOrders">
+            <h4>Нет созданных отчетов.</h4>
+            <button mat-raised-button color="primary" (click)="createReport()">Создать отчет</button>
+          </div>
         </div>
         <div *ngIf="!routes.length">
-          <h4>Отчет пустой. Возможно не создано ни одного маршрута доставки.</h4>
+          <h4>Не создано ни одного маршрута доставки.</h4>
           <a routerLink="/routes">Перейти к странице маршрутов</a>
         </div>
         <div *ngIf="formattedData.length">
