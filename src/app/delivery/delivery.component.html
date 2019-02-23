@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="center-block">
       <h1 class="text-center">Доставки</h1>
-      <p class="text-center">Здесь количество машин требуемых для доставки</p>
+      <p class="text-center">Анализ количества машин требуемых для доставки. Кликните на машину, чтобы узнать ID загруженный заказов.</p>
       <mat-card class="block-card">
         <div *ngIf="report.totalOrders === 0">
           <h4>Нет отчета по заказам.</h4>
@@ -14,13 +14,21 @@
               <p class="car-title">Легковые</p>
               <mat-grid-list cols="6" rowHeight="70px">
                 <mat-grid-tile *ngFor="let car of region.cars, let i = index">
-                  <div class="car" (click)="showModal(car)">{{i + 1}}</div>
+                  <div class="car" (click)="showModal(car)">
+                    <span matBadge="{{i + 1}}" matBadgeOverlap="false">
+                      <mat-icon>directions_car</mat-icon>
+                    </span>
+                  </div>
                 </mat-grid-tile>
               </mat-grid-list>
               <p class="car-title">Грузовики</p>
               <mat-grid-list cols="6" rowHeight="70px">
                 <mat-grid-tile *ngFor="let truck of region.trucks, let i = index">
-                  <div class="truck" (click)="showModal(truck)">{{i + 1}}</div>
+                  <div class="truck" (click)="showModal(truck)">
+                      <span matBadge="{{i + 1}}" matBadgeOverlap="false">
+                          <mat-icon>local_shipping</mat-icon>
+                        </span>
+                  </div>
                 </mat-grid-tile>
               </mat-grid-list>
             </mat-card>

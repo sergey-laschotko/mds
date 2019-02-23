@@ -4,11 +4,7 @@ import { genID } from "./service/lib/lib";
 import { Injectable } from '@angular/core';
 import { IRoute } from "./service/routes";
 
-let routes: IRoute[] = [
-  { title: "Витебск", slug: "vitebsk", id: "123456" },
-  { title: "Гродно", slug: "grodno", id: "432321" },
-  { title: "Гомель", slug: "gomel", id: "332255"}
-];
+let routes: IRoute[] = [];
 
 
 @Injectable()

@@ -15,7 +15,6 @@ export class CarInnerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
   }
 
 }

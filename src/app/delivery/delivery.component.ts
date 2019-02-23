@@ -19,8 +19,6 @@ export class DeliveryComponent implements OnInit {
   ngOnInit() {
     this.getReport();
     this.getSetting();
-    console.log(this.report);
-    console.log(this.formattedSetting);
   }
 
   getReport() {
