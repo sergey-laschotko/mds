@@ -16,6 +16,7 @@ import { AutosComponent } from './autos/autos.component';
 import { RoutesComponent } from './routes/routes.component';
 import { ReportComponent } from './report/report.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { CarInnerComponent } from './carInner/carInner.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
@@ -33,7 +34,8 @@ const routes: Routes = [
     AutosComponent,
     RoutesComponent,
     ReportComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    CarInnerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forRoot(routes)
   ],
+  entryComponents: [CarInnerComponent],
   providers: [RoutesService, DeliveryService, AutosService],
   bootstrap: [AppComponent]
 })

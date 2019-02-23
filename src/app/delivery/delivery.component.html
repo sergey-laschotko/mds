@@ -1,3 +1,31 @@
-<p>
-  delivery works!
-</p>
+<div class="wrapper">
+    <div class="center-block">
+      <h1 class="text-center">Доставки</h1>
+      <p class="text-center">Здесь количество машин требуемых для доставки</p>
+      <mat-card class="block-card">
+        <div *ngIf="report.totalOrders === 0">
+          <h4>Нет отчета по заказам.</h4>
+          <a routerLink="/report">Перейти к созданию отчета</a>
+        </div>
+        <div *ngIf="formattedSetting">
+          <div *ngFor="let region of formattedSetting" class="region-analyze">
+            <mat-card>
+              <p class="region-title">{{region.route.title}}</p>
+              <p class="car-title">Легковые</p>
+              <mat-grid-list cols="6" rowHeight="70px">
+                <mat-grid-tile *ngFor="let car of region.cars, let i = index">
+                  <div class="car" (click)="showModal(car)">{{i + 1}}</div>
+                </mat-grid-tile>
+              </mat-grid-list>
+              <p class="car-title">Грузовики</p>
+              <mat-grid-list cols="6" rowHeight="70px">
+                <mat-grid-tile *ngFor="let truck of region.trucks, let i = index">
+                  <div class="truck" (click)="showModal(truck)">{{i + 1}}</div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>

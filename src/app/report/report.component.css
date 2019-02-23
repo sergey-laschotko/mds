@@ -28,3 +28,10 @@ th {
     font-weight: bold;
     color: #777;
 }
+
+.link-block {
+    display: block;
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}

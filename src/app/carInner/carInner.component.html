@@ -1,0 +1,11 @@
+<div class="model-container">
+    <div class="button-container">
+        <button mat-icon-button color="warn" mat-dialog-close class="close-button">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+    <h4 class="modal-header">В авто находятся заказы с id:</h4>
+    <div>
+        <span class="package-item" *ngFor="let item of data; let i = index">{{item}}</span>
+    </div>
+</div>
